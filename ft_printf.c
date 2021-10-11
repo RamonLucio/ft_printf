@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/11 17:47:17 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/11 19:07:25 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,16 @@ int	ft_printf(const char *format, ...)
 				{
 					chars_printed += 5;
 					ft_putstr_fd("(null)", 1);
+					format++;
 					continue ;
 				}
-				chars_printed += ft_strlen(string_value) - 1;
-				ft_putstr_fd(string_value, 1);
-				format++;
-				continue ;
+				else
+				{
+					chars_printed += ft_strlen(string_value) - 1;
+					ft_putstr_fd(string_value, 1);
+					format++;
+					continue ;
+				}
 			}
 /* 			else if (*format == 'd')
 			{
@@ -100,15 +104,6 @@ int	ft_printf(const char *format, ...)
 
 /* int main(void)
 {
-	ft_printf("%s", "");
-	ft_printf(" %s", "");
-	ft_printf("%s ", "");
-	ft_printf(" %s ", "");
-	ft_printf(" %s ", "-");
-	ft_printf(" %s %s ", "", "-");
-	ft_printf(" %s %s ", " - ", "");
-	ft_printf(" %s %s %s %s ", " - ", "", "4", "");
-	ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
 	ft_printf(" NULL %s NULL ", NULL);
 	return (0);
 } */
