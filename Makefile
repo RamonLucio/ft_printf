@@ -17,6 +17,7 @@ $(NAME):	$(OBJ)
 all:		$(NAME)
 
 clean:
+			cd libft && make fclean
 			rm -f $(OBJ)
 
 fclean:		clean
