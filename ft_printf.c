@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/11 17:15:43 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:47:17 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ int	ft_printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				string_value = va_arg(arg_ptr, char *);
+				if (string_value == NULL)
+				{
+					chars_printed += 5;
+					ft_putstr_fd("(null)", 1);
+					continue ;
+				}
 				chars_printed += ft_strlen(string_value) - 1;
 				ft_putstr_fd(string_value, 1);
 				format++;
