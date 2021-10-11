@@ -6,13 +6,28 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/08 23:04:30 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/11 13:39:48 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//  NÃO ESQUEÇA DE REMOVER, FILA DA PUTA!
+// Don't forget to remove below
 #include <stdio.h>
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, sizeof(c));
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+}
+// Don't forget to remove above
 
 int	ft_printf(const char *format, ...)
 {
@@ -25,43 +40,50 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
+			ft_putchar_fd(*format++, 1);
+		else
 		{
-			ft_putchar_fd(*format, 1);
 			format++;
-			continue;
-		}
-		switch (*++format)
-		{
-			case 'd':
+			if (*format == 'd')
+			{
 				ival = va_arg(arg_ptr, int);
 				printf("%d", ival);
 				format++;
-				break;
-			case 'f':
+				continue ;
+			}
+			else if (*format == 'f')
+			{
 				dval = va_arg(arg_ptr, double);
 				printf("%f", dval);
 				format++;
-				break;
-			case 's':
-				for (sval = va_arg(arg_ptr, char *); *sval; sval++)
-					ft_putchar_fd(*sval, 1);
+				continue ;
+			}
+			else if (*format == 's')
+			{
+				sval = va_arg(arg_ptr, char *);
+				ft_putstr_fd(sval, 1);
 				format++;
-				break;
-			default:
+				continue ;
+			}
+			else
+			{
 				ft_putchar_fd(*format, 1);
 				format++;
-				break;
+				continue ;
+			}
 		}
 	}
-	va_end(arg_ptr); /* clean up when done */
+	va_end(arg_ptr);
 	return (0);
 }
 
-int main(void)
+int	main(void)
 {
-	char	*name = "Ramon";
-	char	*pilpil = "Formiga pilpil";
+	char	*name;
+	char	*pilpil;
 
+	name = "Ramon";
+	pilpil = "Formiga pilpil";
 	ft_printf("Me chamo %s e moro com %s\n", name, pilpil);
 	return (0);
 }
