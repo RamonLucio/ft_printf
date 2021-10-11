@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/11 16:29:37 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:15:43 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,33 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(*s, fd);
 		s++;
 	}
+}
+
+size_t	ft_strlen(const char *s)
+{
+	const char	*p;
+
+	p = s;
+	while (*p != '\0')
+		p++;
+	return (p - s);
 } */
+
 // Don't forget to remove above
 
 int	ft_printf(const char *format, ...)
 {
 	va_list			arg_ptr;
-	int 			char_counter;
-	unsigned char	chval;
-	char			*sval;
-	int				ival;
+	int 			chars_printed;
+	unsigned char	char_value;
+	char			*string_value;
+	// int				ival;
 
 	va_start(arg_ptr, format);
-	char_counter = 0;
+	chars_printed = 0;
 	while (*format)
 	{
-		char_counter++;
+		chars_printed++;
 		if (*format != '%')
 			ft_putchar_fd(*format++, 1);
 		else
@@ -49,22 +60,23 @@ int	ft_printf(const char *format, ...)
 			format++;
 			if (*format == 'c')
 			{
-				chval = va_arg(arg_ptr, int);
-				ft_putchar_fd(chval, 1);
-				format++;
-				continue ;
-			}
-/* 			if (*format == 'd')
-			{
-				ival = va_arg(arg_ptr, int);
-				ft_putnbr_fd(ival, 1);
+				char_value = va_arg(arg_ptr, int);
+				ft_putchar_fd(char_value, 1);
 				format++;
 				continue ;
 			}
 			else if (*format == 's')
 			{
-				sval = va_arg(arg_ptr, char *);
-				ft_putstr_fd(sval, 1);
+				string_value = va_arg(arg_ptr, char *);
+				chars_printed += ft_strlen(string_value) - 1;
+				ft_putstr_fd(string_value, 1);
+				format++;
+				continue ;
+			}
+/* 			else if (*format == 'd')
+			{
+				ival = va_arg(arg_ptr, int);
+				ft_putnbr_fd(ival, 1);
 				format++;
 				continue ;
 			} */
@@ -77,19 +89,20 @@ int	ft_printf(const char *format, ...)
 		}
 	}
 	va_end(arg_ptr);
-	return (char_counter);
+	return (chars_printed);
 }
 
 /* int main(void)
 {
-	ft_printf("%c\n", '0');
-	ft_printf(" %c \n", '0');
-	ft_printf(" %c\n", '0' - 256);
-	ft_printf("%c \n", '0' + 256);
-	ft_printf(" %c %c %c \n", '0', 0, '1');
-	ft_printf(" %c %c %c \n", ' ', ' ', ' ');
-	ft_printf(" %c %c %c \n", '1', '2', '3');
-	ft_printf(" %c %c %c \n", '2', '1', 0);
-	ft_printf(" %c %c %c \n", 0, '1', '2');
+	ft_printf("%s", "");
+	ft_printf(" %s", "");
+	ft_printf("%s ", "");
+	ft_printf(" %s ", "");
+	ft_printf(" %s ", "-");
+	ft_printf(" %s %s ", "", "-");
+	ft_printf(" %s %s ", " - ", "");
+	ft_printf(" %s %s %s %s ", " - ", "", "4", "");
+	ft_printf(" %s %s %s %s %s ", " - ", "", "4", "", "2 ");
+	ft_printf(" NULL %s NULL ", NULL);
 	return (0);
 } */
