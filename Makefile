@@ -2,7 +2,7 @@ SRC		=	ft_printf.c
 
 OBJ		=	$(SRC:.c=.o)
 NAME	=	libftprintf.a
-CC		=	gcc
+CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
 LIBFT	=	./libft/libft.a
 
