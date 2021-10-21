@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/21 15:40:11 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/21 16:00:59 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static void	put_arg(char spec, va_list arg_ptr, int *chars_printed)
 	{
 		if (spec == 'u')
 			str = itoa_base((unsigned int) va_arg(arg_ptr, int), 10, spec);
-		else if (spec == 'x' || spec == 'X')
+		else
 			str = itoa_base((unsigned int) va_arg(arg_ptr, int), 16, spec);
 		*chars_printed += putstr_fd(str, 1);
 		free(str);
