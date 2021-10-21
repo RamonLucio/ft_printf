@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 10:15:35 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/08/30 15:36:15 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/12 09:17:59 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** DESCRIPTION
 ** 		Outputs the string ’s’ to the given file
-** 		descriptor, followed by a newline.
+** 		descriptor.
 */
 
 void	ft_putstr_fd(char *s, int fd)
