@@ -6,13 +6,21 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/22 15:08:13 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:59:57 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	put_arg(char specifier, va_list ap, int *chars_printed)
+/*
+** DESCRIPTION
+** 			printf_arg receives an argument pointer from ft_printf and
+** 			calls va_arg on that argument to retrieve a value. Furthermore,
+** 			printf_arg print the value according to the conversion specifiers
+** 			and counts characters printed.
+*/
+
+static void	printf_arg(char specifier, va_list ap, int *chars_printed)
 {
 	char	*str;
 
@@ -41,6 +49,18 @@ static void	put_arg(char specifier, va_list ap, int *chars_printed)
 		*chars_printed += print_char_fd(specifier, 1);
 }
 
+/*
+** DESCRIPTION
+** 			ft_printf mimic some functionality of the real printf,
+** 			which writes the output under the control of a format string
+** 			that specifies how arguments accessed via the variable-length
+** 			argument facilities of stdarg(3)) are converted for output.
+** RETURN VALUES
+** 			ft_printf returns the number of characters printed
+** 			(not including the trailing `\0' used to end output to strings).
+** 			If an error occurs, ft_printf returns a negative value.
+*/
+
 int	ft_printf(const char *format, ...)
 {
 	va_list		arg_ptr;
@@ -53,7 +73,7 @@ int	ft_printf(const char *format, ...)
 		if (*format != '%')
 			chars_printed += print_char_fd(*format, 1);
 		else
-			put_arg(*++format, arg_ptr, &chars_printed);
+			printf_arg(*++format, arg_ptr, &chars_printed);
 		format++;
 	}
 	va_end(arg_ptr);
