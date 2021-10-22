@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/22 15:59:57 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:15:02 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 /*
 ** DESCRIPTION
-** 			printf_arg receives an argument pointer from ft_printf and
+** 			print_arg receives an argument pointer from ft_printf and
 ** 			calls va_arg on that argument to retrieve a value. Furthermore,
-** 			printf_arg print the value according to the conversion specifiers
+** 			print_arg print the value according to the conversion specifiers
 ** 			and counts characters printed.
 */
 
-static void	printf_arg(char specifier, va_list ap, int *chars_printed)
+static void	print_arg(char specifier, va_list ap, int *chars_printed)
 {
 	char	*str;
 
@@ -58,7 +58,6 @@ static void	printf_arg(char specifier, va_list ap, int *chars_printed)
 ** RETURN VALUES
 ** 			ft_printf returns the number of characters printed
 ** 			(not including the trailing `\0' used to end output to strings).
-** 			If an error occurs, ft_printf returns a negative value.
 */
 
 int	ft_printf(const char *format, ...)
@@ -73,7 +72,7 @@ int	ft_printf(const char *format, ...)
 		if (*format != '%')
 			chars_printed += print_char_fd(*format, 1);
 		else
-			printf_arg(*++format, arg_ptr, &chars_printed);
+			print_arg(*++format, arg_ptr, &chars_printed);
 		format++;
 	}
 	va_end(arg_ptr);
