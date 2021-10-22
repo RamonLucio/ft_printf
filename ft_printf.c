@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/21 18:51:39 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:08:13 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,10 @@ int	ft_printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-			chars_printed += print_char_fd(*format++, 1);
+			chars_printed += print_char_fd(*format, 1);
 		else
-		{
-			format++;
-			put_arg(*format, arg_ptr, &chars_printed);
-			format++;
-			continue ;
-		}
+			put_arg(*++format, arg_ptr, &chars_printed);
+		format++;
 	}
 	va_end(arg_ptr);
 	return (chars_printed);
