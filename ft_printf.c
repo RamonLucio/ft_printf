@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 15:03:03 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/22 16:15:02 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/22 18:04:44 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 /*
 ** DESCRIPTION
-** 			print_arg receives an argument pointer from ft_printf and
-** 			calls va_arg on that argument to retrieve a value. Furthermore,
-** 			print_arg print the value according to the conversion specifiers
-** 			and counts characters printed.
+** 		print_arg receives an argument pointer from ft_printf and
+** 		calls va_arg on that argument to retrieve a value. Furthermore,
+** 		print_arg print the value according to the conversion specifiers
+** 		and counts characters printed.
 */
 
 static void	print_arg(char specifier, va_list ap, int *chars_printed)
@@ -51,13 +51,13 @@ static void	print_arg(char specifier, va_list ap, int *chars_printed)
 
 /*
 ** DESCRIPTION
-** 			ft_printf mimic some functionality of the real printf,
-** 			which writes the output under the control of a format string
-** 			that specifies how arguments accessed via the variable-length
-** 			argument facilities of stdarg(3)) are converted for output.
+** 		ft_printf mimic some functionality of the real printf,
+** 		which writes the output under the control of a format string
+** 		that specifies how arguments accessed via the variable-length
+** 		argument facilities of stdarg(3)) are converted for output.
 ** RETURN VALUES
-** 			ft_printf returns the number of characters printed
-** 			(not including the trailing `\0' used to end output to strings).
+** 		ft_printf returns the number of characters printed
+** 		(not including the trailing `\0' used to end output to strings).
 */
 
 int	ft_printf(const char *format, ...)
