@@ -6,7 +6,7 @@
 /*   By: rlucio-l <rlucio-l@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:18:30 by rlucio-l          #+#    #+#             */
-/*   Updated: 2021/10/21 19:04:27 by rlucio-l         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:19:51 by rlucio-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,27 @@ int	print_nbr_fd(int number, int fd)
 	return (chars_printed);
 }
 
-char	*reverse_string(char *s)
+char	*reverse_string(char *string)
 {
 	int		first_index;
 	int		last_index;
+	char	*ptr;
 	char	temp;
 
 	first_index = 0;
-	last_index = ft_strlen(s) - 1;
+	ptr = string;
+	while (*ptr != '\0')
+		ptr++;
+	last_index = (ptr - string) - 1;
 	while (first_index < last_index)
 	{
-		temp = s[first_index];
-		s[first_index] = s[last_index];
-		s[last_index] = temp;
+		temp = string[first_index];
+		string[first_index] = string[last_index];
+		string[last_index] = temp;
 		first_index++;
 		last_index--;
 	}
-	return (s);
+	return (string);
 }
 
 /*
