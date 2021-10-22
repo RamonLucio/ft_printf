@@ -10,14 +10,11 @@ LIBFT	=	./libft/libft.a
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 $(NAME):	$(OBJ)
-			cd libft && make
-			cp $(LIBFT) $(NAME)
 			ar rcs ${NAME} ${OBJ}
 
 all:		$(NAME)
 
 clean:
-			cd libft && make fclean
 			rm -f $(OBJ)
 
 fclean:		clean
