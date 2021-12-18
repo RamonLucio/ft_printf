@@ -4,7 +4,6 @@ OBJ		=	$(SRC:.c=.o)
 NAME	=	libftprintf.a
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
-LIBFT	=	./libft/libft.a
 
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
